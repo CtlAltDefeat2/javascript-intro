@@ -61,20 +61,58 @@ const ex10 = () => {
 }
 
 const ex11 = () => {
-    let array = ['dog', 3, 7, 'cat', 13, 1.2];
+    let array = ['this', 'is',1,3,2.1,'a','test'];
     console.log(countIt(array, "numbers"));
     console.log(countIt(array, "strings"));
     console.log(countIt(array, "decimals"));
 }
 
+//June 9th Exercises
+
+const exJ6 = () => {
+    let array = ["this", "is", 1, 3, 2.1, "a", "test"];
+let result = countItems(array);
+console.log("Number of Integers: " + result.numIntegers)
+console.log("Number of Decimal Numbers: " + result.numDecimals)
+console.log("Number of Strings: " + result.numStrings)
 
 
+
+}
+
+const exJ1 = () => {
+    const array = [1, '2', 3, 'test', 1.2];
+    console.log(countDecimals(array));
+
+}
+
+const exJ2 = () => {
+    const array = [12, 55, "2", 22, 11, true];
+    console.log(minNumber(array));
+}
+
+const exJ3 = (array) => {
+    array = ['this', 'is', 'a', 'test', 'happy'];
+    console.log(shortestString(array));
+
+}
+
+const exJ4 = () => {
+    let array = ["this", "is", "a", "test"];
+    console.log(countLetters(array));
+}
+
+const exJ5 = () => {
+    let array = ["this", "is", 1, 3, 2.1, "a", "test"];
+    console.log(countIt2(array));
+}
 
 
 //
 // Your functions here...
 //
 
+//used in ex1 & ex 11
 const countNumbers = (array) => {
     let retval = 0;
     // TODO...
@@ -83,9 +121,9 @@ const countNumbers = (array) => {
             retval++
         }
     }
-    return 'There are '+retval+ ' numbers';
+    return retval;
 }
-
+//used in ex11
 const countStrings = (array) => {
     let retval = 0;
     // TODO...
@@ -94,9 +132,9 @@ const countStrings = (array) => {
             retval++
         }
     }
-    return 'There are '+retval+ ' strings';
+    return retval;
 }
-
+//used in ex11
 const countDecimals = (array) => {
     let retval = 0;
     // TODO...
@@ -105,13 +143,13 @@ const countDecimals = (array) => {
             retval++
         }
     }
-    return 'There are '+retval+ ' decimals';
+    return retval;
 }
 
 const minNumber = array => {
    let minNumber = array[0]
     for(let i = 0; i<array.length; i++){
-        if(array[i]<minNumber){
+        if(array[i]<minNumber&&typeof(array[i])==='number'){
             minNumber=array[i]
         }
     }
@@ -158,6 +196,16 @@ const thisCounter = (string) => {
         }
     }
     return 'The word \"this\" occurs: ' +thisCount +' times.'
+}
+
+const shortestString = (array) => {
+    let shortest = array[0]
+    for(let i = 0; i<array.length; i++){
+        if(array[i].length<shortest.length){
+            shortest=array[i]
+        }
+    }
+    return shortest
 }
 
 const longestString = (array) => {
@@ -224,8 +272,36 @@ const countIt = (array, string) => {
     return retval
 }
 
+const countIt2 = (array) => {
+    let retval = ""
+    let numbers ="The number of numbers is "+ countNumbers(array)
+    let strings = "The number of strings is "+countStrings(array)
+    let decimals = "The number of decimals is "+countDecimals(array)
+   
+   retval = numbers + '\n' + strings + '\n' + decimals
+    return retval
+}
+
+
+
+
+
+
+const countItems = (array) => {
+    let numbers = countNumbers(array)
+    let strings = countStrings(array)
+    let decimals = countDecimals(array)
+
+    let result = {
+        numIntegers: numbers,
+        numDecimals: decimals, 
+        numStrings: strings
+    }
+    return result
+}
+
 const main = async () => {
- ex11()
+    exJ6()
 }
 
 main();
